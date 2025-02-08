@@ -25,31 +25,36 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class MainActivity extends AppCompatActivity {
+    /**
+     * Called when the activity is first created.
+     * This is where you should do all of your normal static set up: create views, bind data to lists, etc.
+     * This method also provides you with a Bundle containing the activity's previously frozen state, if there was one.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
+
+    /**
+     * Starts the foreground service.
+     */
     public void startService(View view) {
         Log.i("main","starting");
         Intent serviceIntent = new Intent(this, SAMForegroundService.class);
         serviceIntent.putExtra("inputExtra", "Start Foreground Service in Android");
-        //方法一
-        serviceIntent.setAction("STARTFOREGROUND_ACTION");
         startService(serviceIntent);
-        //方法二
-        // startService(serviceIntent);
     }
 
+    /**
+     * Stops the foreground service.
+     */
     public void stopService(View view) {
         Log.i("main","stopping");
         Intent serviceIntent = new Intent(this, SAMForegroundService.class);
         serviceIntent.putExtra("inputExtra", "Stop Foreground Service in Android");
-        //方法一
         serviceIntent.setAction("STOPFOREGROUND_ACTION");
-        startService(serviceIntent);
-        //方法二
-        //stopService(serviceIntent);
+        stopService(serviceIntent);
     }
 }
