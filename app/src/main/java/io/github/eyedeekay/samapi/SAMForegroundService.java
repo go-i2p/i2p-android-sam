@@ -136,18 +136,6 @@ public class SAMForegroundService extends Service {
         return true;
     }
 
-    public Uri resToURI(int resourceId) {
-        Resources resources = getResources();
-        Log.i("Foreground", "Getting the default properties");
-        Uri uri = new Uri.Builder()
-                .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
-                .authority(resources.getResourcePackageName(resourceId))
-                .appendPath(resources.getResourceTypeName(resourceId))
-                .appendPath(resources.getResourceEntryName(resourceId))
-                .build();
-        return uri;
-    }
-
     public Properties SAM_PROPERTIES() throws IOException {
         Log.i("Foreground", "Getting the default properties");
         Properties sam_properties = new Properties();
